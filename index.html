@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battesimo di Gabriele e Matrimonio</title>
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Definizione Palette Colori */
+        :root {
+            --light-blue-bg: #E8F1F8; /* Colore di sfondo azzurro chiarissimo */
+            --dark-blue-text: #537FA7; /* Colore del testo principale blu scuro */
+            --accent-blue: #3A7FBB; /* Colore per i nomi (Gabriele/Matrimonio) */
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Crimson Pro', serif; /* Font principale elegante per il testo */
+            background-color: var(--light-blue-bg);
+            color: var(--dark-blue-text);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+		padding-top: 40px;
+		overflow-x: hidden;
+		overscroll-behavior-y: none;
+	     }
+
+	
+	#welcome-section {
+ 		scroll-margin-top: 45px;
+		}
+	#home-section {
+ 		scroll-margin-top: 65px;
+		}
+	#luoghi-section {
+   	 	scroll-margin-top: 65px; 
+		}
+	#rsvp-section {
+    		scroll-margin-top: 65px; 
+		}
+
+/* Personalizzazione della barra di scorrimento per browser Chrome, Safari e Edge */
+::-webkit-scrollbar {
+    width: 12px; /* Larghezza della barra */
+}
+
+/* Lo sfondo della barra */
+::-webkit-scrollbar-track {
+    background: rgba(232, 241, 248, 0.5); /* Azzurro chiarissimo semitrasparente */
+}
+
+/* La parte che scorre (il "cursore") */
+::-webkit-scrollbar-thumb {
+    background: var(--accent-blue); /* Il tuo blu di accento */
+    border-radius: 10px; /* Bordi arrotondati */
+}
+
+/* Effetto al passaggio del mouse sul cursore */
+::-webkit-scrollbar-thumb:hover {
+    background: #2aa1e6; 
+}
+
+/* Per Firefox (supporto limitato ma efficace) */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) rgba(232, 241, 248, 0.5);
+	
+}
+
+.container {
+    max-width: 500px;
+    background: transparent;
+    min-height: 100vh;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 30px 15px;
+    position: relative;
+    z-index: 1; /* Metti il contenuto sopra lo sfondo */
+	height: auto; 
+    overflow-y: visible;
+}
+
+
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100lvh;
+	height: 100vh;
+	
+    background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.90)), url('background.png');
+    background-size: cover;
+    background-position: center;
+	background-repeat: no-repeat;
+    z-index: 0; /* Mettilo sotto tutto */
+    pointer-events: none; /* Assicurati che non interferisca con i tocchi */
+}
+
+        header, section, footer { text-align: center; }
+
+/* Stile della Barra dei Menù */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(232, 241, 248, 0.95); /* Azzurro chiarissimo semitrasparente */
+    backdrop-filter: blur(5px); /* Effetto vetro sfocato */
+    /*border-bottom: 1px solid var(--accent-blue);*/
+    z-index: 2000; /* Più alto di tutto il resto */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-container {
+    display: flex;
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--dark-blue-text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--accent-blue);
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Stile Pagina di Benvenuto */
+.full-screen-welcome {
+    height: calc(100dvh - 45px); /* Altezza totale meno la navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-intro {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.welcome-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--accent-blue);
+    line-height: 1.2;
+}
+
+.welcome-and {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    margin: 5px 0;
+}
+
+.welcome-names {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Indicatore per suggerire di scorrere */
+.scroll-indicator {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    color: var(--dark-blue-text);
+    opacity: 0.7;
+    animation: pulse 2s infinite;
+}
+
+.tiny-arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--dark-blue-text);
+    border-bottom: 2px solid var(--dark-blue-text);
+    transform: rotate(45deg);
+    margin: 10px auto;
+}
+
+@keyframes pulse {
+    0% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(5px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.5; }
+}
+
+/* stile freccia scopri i dettagli"
+.scroll-indicator {
+    margin-top: 50px;
+    cursor: pointer; /* Fa apparire la manina del mouse */
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.scroll-indicator:active {
+    transform: scale(0.95); /* Effetto "pressione" quando si tocca lo schermo */
+}
+
+        .intro-text {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            margin-top: 25px;
+		letter-spacing: 1.16px;
+        }
+
+        .date-location {
+    		font-family: 'Playfair Display', serif;
+    		font-weight: 700;
+    		font-size: 1.3rem;
+    		margin-bottom: 25px;
+    		line-height: 1.2;
+    		width: 100%; 
+		color: #2aa1e6;
+	}
+
+        .celebreremo-text {
+            font-size: 1.1rem;
+		letter-spacing: 1.16px;
+            margin-bottom: 2px;
+        }
+
+        /* Font Calligrafico per i Nomi Principali */
+        .script-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+		letter-spacing: 1.2px;
+        }
+
+        .description-text {
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+		letter-spacing: 1.16px;
+		line-height: 1.1;
+        }
+
+        .quote {
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 25px;
+		letter-spacing: 1.05px;
+        }
+
+        .reception-header {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 20px;
+		letter-spacing: 1.16px;
+        }
+
+        .villa-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 5px;
+		color: #2aa1e6
+        }
+
+        .address-text {
+            font-size: 0.8rem;
+            margin-top: -3px;
+		color: #2aa1e6
+        }
+
+        /* Stile pulsante RSVP modificato per lo stile dell'immagine */
+        .btn-rsvp {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Messaggio Offline */
+        .offline-notice {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 8px;
+            text-align: center;
+            display: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+       
+      
+	<a href="#welcome-section" class="nav-item">Welcome</a>
+	<a href="#home-section" class="nav-item">Home</a>
+        <a href="#luoghi-section" class="nav-item">Luoghi</a>
+        <a href="#rsvp-section" class="nav-item">Conferma</a>
+        
+    </div>
+</nav>
+
+	<div class="fixed-background"></div>
+	<div id="offline-msg" class="offline-notice">Stato: Offline. La mappa potrebbe non funzionare.</div>
+
+
+
+<div class="container">
+    <!-- SEZIONE BENVENUTO -->
+    <section id="welcome-section" class="full-screen-welcome">
+        <div class="welcome-content">
+            <p class="welcome-and">Siete invitati al</p>
+            <h1 class="welcome-title">Battesimo di Gabriele</h1>
+            <p class="welcome-and">e al</p>
+            <h1 class="welcome-title">Matrimonio</h1>
+            <p class="welcome-names">di Luca e Corinne</p>
+		<a href="#home-section" class="scroll-indicator" style="text-decoration: none; color: inherit; display: block;">
+    <p>Scopri i dettagli</p>
+    <div class="tiny-arrow"></div>
+</a>
+        </div>
+    </section>
+
+		
+	<!-- SEZIONE HOME -->
+<section id="home-section">
+
+    <header>
+        <p class="intro-text">Con immensa gioia vi invitiamo a condividere un momento speciale per la nostra famiglia</p>
+    </header>
+
+    <section class="date-location">
+	<div style="text-align: right; width: 100%; padding-right: 30px;">
+       		 <p>11 luglio 2026 ore 10.15</p>
+        	<p>presso la Chiesa della Santa Famiglia di Cecina (LI)</p>
+	
+	</div>	
+    </section>
+
+<div style="height: 30px;"></div>
+
+    <section>
+        <p class="celebreremo-text">celebreremo il</p>
+        <p class="script-text">battesimo di Gabriele</p>
+	<p class="celebreremo-text">ed il nostro</p>
+        <p class="script-text">matrimonio</p>
+	<p class="celebreremo-text">davanti a Dio, consacrando il cammino che già condividiamo ogni giorno</p>
+    </section>
+
+<div style="height: 50px;"></div>
+
+
+    <section>
+        <p class="quote">La vostra presenza renderà questo momento ancora più prezioso</p>
+    </section>
+
+<div style="height: 30px;"></div>
+
+    <footer>
+        <p class="reception-header">A seguire festeggeremo insieme presso</p>
+        <div style="text-align: right; width: 100%; padding-right: 30px;">
+            <p class="villa-name">Villa Margherita</p>
+            <p class="address-text">Via Mario Puccini, 44, 57128 Quercianella LI</p>
+        </div>
+    </footer>
+
+<div style="height: 50px;"></div>
+ 
+</section>
+
+
+
+<!-- Sezione LUOGHI - Layout Square & Modern -->
+<section id="luoghi-section" style="margin-top: 30px; padding: 15px; background: rgba(255, 255, 255, 0.4); border-radius: 20px; text-align: center;">
+    
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark-blue-text); margin-bottom: 25px;">
+        I Luoghi della nostra giornata
+    </h2>
+
+    <!-- CARD CHIESA -->
+    <div class="location-card" style=" background: rgba(255, 255, 255, 0.6); border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 30px; padding: 15px; display: flex; flex-direction: column;">
+        
+
+        <!-- Foto Chiesa Quadrata -->
+        <div style="width: 100%; aspect-ratio: 1 / 1; 
+                    background-image: url('chiesa.png'); 
+                    background-size: cover; background-position: center;
+                    border-radius: 15px; margin-bottom: 15px;">
+        </div>
+
+        <!-- Mappa Chiesa -->
+        <div style="width: 100%; height: 200px; border-radius: 15px; overflow: hidden; margin-bottom: 20px; border: 1px solid #eee;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2903.244385431449!2d10.533397899999999!3d43.309143299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5fe0131c3f7c1%3A0x2734b2d22ef858f8!2sChiesa%20della%20Santa%20Famiglia!5e0!3m2!1sit!2sit!4v1774688451264!5m2!1sit!2sit" 
+                width="100%" height="100%" style="border:0; display: block;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Info Chiesa -->
+        <div style="padding-bottom: 10px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #333; margin-bottom: 5px;">La Cerimonia</h3>
+            <p style="font-size: 0.9rem; line-height: 1.4; color: #666; margin-bottom: 20px;">
+                Chiesa della Santa Famiglia<br>
+                Cecina (LI)
+            </p>
+            <a href="https://maps.app.goo.gl/4Mpt3xBnsWp6w7zXA" target="_blank" rel="noopener" 
+               style="display: inline-block; width: 90%; padding: 12px 0; background: var(--accent-blue, #2aa1e6); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem;">
+               Apri Navigatore
+            </a>
+        </div>
+    </div>
+
+    <!-- CARD VILLA -->
+    <div class="location-card" style=" background: rgba(255, 255, 255, 0.6); border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); padding: 15px; display: flex; flex-direction: column;">
+        
+
+        <!-- Foto Villa Quadrata -->
+        <div style="width: 100%; aspect-ratio: 1 / 1; 
+                    background-image: url('villa.png'); 
+                    background-size: cover; background-position: center;
+                    border-radius: 15px; margin-bottom: 15px;">
+        </div>
+
+        <!-- Mappa Villa -->
+        <div style="width: 100%; height: 200px; border-radius: 15px; overflow: hidden; margin-bottom: 20px; border: 1px solid #eee;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2896.162535473793!2d10.369868499999999!3d43.457203799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d5e95f099832cf%3A0x7f5dceadbd5a1721!2sHotel%20Ristorante%20Villa%20Margherita!5e0!3m2!1sit!2sit!4v1774688304487!5m2!1sit!2sit" 
+                width="100%" height="100%" style="border:0; display: block;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Info Villa -->
+        <div style="padding-bottom: 10px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #333; margin-bottom: 5px;">Il Ricevimento</h3>
+            <p style="font-size: 0.9rem; line-height: 1.4; color: #666; margin-bottom: 20px;">
+                Villa Margherita<br>
+                Quercianella (LI)
+            </p>
+            <a href="https://maps.app.goo.gl/YmPmuGiYQUcYPNog7" target="_blank" rel="noopener" 
+               style="display: inline-block; width: 90%; padding: 12px 0; background: var(--accent-blue, #2aa1e6); color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 0.9rem;">
+               Apri Navigatore
+            </a>
+        </div>
+    </div>
+
+<div style="height: 50px;"></div>
+</section>
+
+
+  <!-- Sezione RSVP -->
+
+<section id="rsvp-section" style="margin-top: 10px; padding: 20px; background: rgba(255, 255, 255, 0.3); border-radius: 15px;">
+    <p style="font-family: 'Playfair Display', serif; font-weight: 700; margin-bottom: 20px;">Conferma la tua presenza</p>
+    
+    <form id="rsvpForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf_a3LxYfg3Yk4PZaSVFxI5z50t2XIvYTHs5cMwsdYa5N09SA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        
+        <!-- Nome della Famiglia -->
+        <input type="text" name="entry.1150712029" placeholder="Nome della famiglia" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-bottom: 1px solid #2aa1e6; background: transparent; font-family: inherit;">
+        
+        <!-- Numero di persone (Testo Libero) -->
+        <input type="text" name="entry.2116877992" placeholder="Numero di persone (es: 2 adulti e 1 bambino)" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-bottom: 1px solid #2aa1e6; background: transparent; font-family: inherit;">
+        
+        <!-- Scelta Multipla: Parteciperai? -->
+        <select name="entry.839103442" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-bottom: 1px solid #2aa1e6; background: transparent; color: #537FA7; font-family: inherit;">
+            <option value="" disabled selected>Parteciperai?</option>
+            <option value="SI">Sì</option>
+            <option value="NO">No</option>
+            <option value="FORSE">Forse</option>
+        </select>
+
+        <textarea name="entry.1996379655" placeholder="Eventuali intolleranze o note" rows="2" style="width: 100%; padding: 10px; margin-bottom: 15px; border: none; border-bottom: 1px solid #2aa1e6; background: transparent; font-family: inherit;"></textarea>
+
+        <button type="submit" style="background: var(--accent-blue, #2aa1e6); color: white; padding: 12px 30px; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; width: 90%; padding: 12px 0;">Invia Risposta</button>
+    </form>
+    
+    <div id="success-msg" style="display: none; color: #2aa1e6; font-weight: 600; margin-top: 20px;">Grazie! Risposta registrata.</div>
+    
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted) { showSuccess(); }"></iframe>
+ 
+</section>
+
+
+
+
+</div>
+
+<script>
+    // Controllo stato offline/online
+    function updateOnlineStatus() {
+        document.getElementById('offline-msg').style.display = navigator.onLine ? "none" : "block";
+    }
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    // Registrazione Service Worker per offline
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(err => console.log("SW non registrato", err));
+    }
+</script>
+
+</body>
+</html>

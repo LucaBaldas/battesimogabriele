@@ -1,0 +1,20 @@
+{
+  "short_name": "Gabriele",
+  "name": "Battesimo di Gabriele",
+  "icons": [
+    {
+      "src": "icona.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icona.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#E8F1F8",
+  "theme_color": "#3A7FBB"
+}
