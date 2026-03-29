@@ -539,19 +539,37 @@ html {
 </div>
 
 <script>
-    // Controllo stato offline/online
+    // 1. Controllo stato offline/online
     function updateOnlineStatus() {
-        document.getElementById('offline-msg').style.display = navigator.onLine ? "none" : "block";
+        var offlineMsg = document.getElementById('offline-msg');
+        if (offlineMsg) {
+            offlineMsg.style.display = navigator.onLine ? "none" : "block";
+        }
     }
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
     updateOnlineStatus();
 
-    // Registrazione Service Worker per offline
+    // 2. Registrazione Service Worker
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(err => console.log("SW non registrato", err));
+        navigator.serviceWorker.register('sw.js')
+            .catch(err => console.log("SW non registrato", err));
+    }
+
+    // 3. Logica RSVP (DEVE STARE FUORI DAL BLOCCO PRECEDENTE)
+    var submitted = false;
+
+    function showSuccess() {
+        if (submitted) {
+            var form = document.getElementById('rsvpForm');
+            var msg = document.getElementById('success-msg');
+            var title = document.querySelector('#rsvp-section p');
+
+            if (form) form.style.display = 'none';
+            if (title) title.style.display = 'none';
+            if (msg) msg.style.display = 'block';
+        }
     }
 </script>
-
 </body>
 </html>
